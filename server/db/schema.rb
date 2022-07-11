@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220711032507) do
+ActiveRecord::Schema.define(version: 20220711194913) do
 
   create_table "artworks", force: :cascade do |t|
     t.integer "key"
     t.string  "title"
     t.string  "artist"
     t.string  "img_link"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "artwork_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "first_name"
+    t.string "password"
   end
 
 end
