@@ -6,36 +6,7 @@ require "sqlite3"
 puts "Deleting old data..."
 Artwork.destroy_all
 
-# uri = URI.parse("https://api.artic.edu/api/v1/artworks/226550")
-# response = Net::HTTP.get_response(uri)
-# data = JSON.parse(response.body)
-# pp data["data"]["id"]
 
-# idArr = [
-#   869,
-#   2189,
-#   2816,
-#   4081,
-#   4428,
-#   4575,
-#   4758,
-#   4773,
-#   4788,
-#   4796,
-#   4884,
-#   5357,
-#   5848,
-#   6565,
-#   6596,
-#   7021,
-#   7124,
-#   8624,
-#   8633,
-#   8958,
-#   8991,
-#   9503,
-#   9512
-# ]
 
 amino = Array(1..8000)
 
