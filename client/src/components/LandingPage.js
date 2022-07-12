@@ -1,24 +1,24 @@
-// import React, { useState, useEffect } from "react";
-// import { Route, Switch } from "react-router-dom";
-// import LoginForm from "./LoginForm";
-// import NewUserForm from "./NewUserForm";
-// import DefaultImageLandingPage from "./DefaultImageLandingPage";
-// import HeaderLandingPage from "./HeaderLandingPage";
-// import { useHistory } from "react-router-dom";
-
-// function LandingPage() {
-//   const history = useHistory();
-
-//   function handleNewUserClick() {
-//     history.push("/newUser");
-//   }
-// }
-
-// export default LandingPage;
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 function LandingPage() {
   const [show, setShow] = useState(false);
+  const [images, setImages] = useState([]);
+  const [loadImage, setLoadImage] = useState("");
+  const [imageTitle, setImageTitle] = useState("");
+  const [artistName, setArtistName] = useState("");
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:4200/artworks")
+      .then((response) => response.json())
+      .then((data) => {
+        setImages(data);
+        const imageNumber = Math.trunc(Math.random() * data.length);
+        setLoadImage(data[imageNumber].img_link);
+        setImageTitle(data[imageNumber].title);
+        setArtistName(data[imageNumber].artist);
+      });
+  }, []);
+
+  let loadImageUrl = `https://www.artic.edu/iiif/2/${loadImage}/full/843,/0/default.jpg`;
 
   return (
     <>
@@ -216,9 +216,10 @@ function LandingPage() {
             <div className="w-1/2 sm:w-2/5 h-64 md:h-auto m-auto flex items-center overflow-hidden">
               {/* <img class="h-full" src="https://cdn.tuk.dev/assets/components/111220/Hero4/Rectangle.png" alt="Device"> */}
               <img
+                width="500"
                 className="md:absolute md:w-1/2 md:-ml-28"
-                src="https://static01.nyt.com/images/2020/05/16/business/16JORDAN-01sub/16JORDAN-01sub-mediumSquareAt3X.jpg"
-                alt
+                src={loadImageUrl}
+                alt="Art from our collection"
               />
             </div>
           </div>
