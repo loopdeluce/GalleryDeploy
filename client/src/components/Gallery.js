@@ -1,10 +1,11 @@
+import React from "react";
 import Card from "./Card";
 import HomeNav from "./HomeNav";
 
-function Discover() {
+function Gallery() {
   return (
     <div>
-      Discover
+      This is Gallery, just looks the same
       <HomeNav />
       <div className="flex flex-wrap gap-x-8 gap-y-6 justify-center">
         <Card />
@@ -25,4 +26,4 @@ function Discover() {
   );
 }
 
-export default Discover;
+export default Gallery;
