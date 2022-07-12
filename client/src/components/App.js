@@ -3,11 +3,13 @@ import "../App.css";
 
 import React from "react";
 import LandingPage from "./LandingPage";
+import HomePage from "./HomePage";
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
+      {/* <LandingPage/> */}
+      <HomePage />
     </div>
   );
 }
