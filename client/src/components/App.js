@@ -1,12 +1,12 @@
 // import logo from "./logo.svg";
 import "../App.css";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LandingPage from "./LandingPage";
 import LoginForm from "./LoginForm";
 import NewUserForm from "./NewUserForm";
 import HomePage from "./HomePage";
-import Content from "./Content";
+// import Content from "./Content";
 import Gallery from "./Gallery";
 import Discover from "./Discover";
 import ArtworkDetail from "./ArtworkDetail";
@@ -30,9 +30,10 @@ import ArtworkDetail from "./ArtworkDetail";
 //   if (window.location.pathname === "/gallery") return <Gallery />;
 // };
 
-// const showDiscover = () => {
+// const showDiscover = (collection) => {
 //   if (window.location.pathname === "/discover") return <Discover />;
 // };
+
 
 function App() {
   return (
