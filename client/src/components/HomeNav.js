@@ -15,6 +15,10 @@ function classNames(...classes) {
 }
 
 export default function HomeNav() {
+
+  const testingPage = () => {
+    window.location.assign("http://localhost:3000/testing")
+  }
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -50,6 +54,7 @@ export default function HomeNav() {
                     {navigation.map((item) => (
                       <a
                         key={item.name}
+                        onClick={testingPage}
                         href={item.href}
                         className={classNames(
                           item.current
