@@ -9,40 +9,44 @@ import HomePage from "./HomePage";
 // import Content from "./Content";
 import Gallery from "./Gallery";
 import Discover from "./Discover";
+import ArtworkDetail from "./ArtworkDetail";
+
 // import HomePage from "./HomePage";
 
-const showLandingPage = () => {
-  if (window.location.pathname === "/") return <LandingPage />;
-};
+// const showLandingPage = () => {
+//   if (window.location.pathname === "/") return <LandingPage />;
+// };
 
-const showLoginForm = () => {
-  if (window.location.pathname === "/login") return <LoginForm />;
-};
-const showUserForm = () => {
-  if (window.location.pathname === "/signup") return <NewUserForm />;
-};
-const showHome = () => {
-  if (window.location.pathname === "/home") return <HomePage />;
-};
-const showGallery = () => {
-  if (window.location.pathname === "/gallery") return <Gallery />;
-};
+// const showLoginForm = () => {
+//   if (window.location.pathname === "/login") return <LoginForm />;
+// };
+// const showUserForm = () => {
+//   if (window.location.pathname === "/signup") return <NewUserForm />;
+// };
+// const showHome = () => {
+//   if (window.location.pathname === "/home") return <HomePage />;
+// };
+// const showGallery = () => {
+//   if (window.location.pathname === "/gallery") return <Gallery />;
+// };
 
-const showDiscover = (collection) => {
-  if (window.location.pathname === "/discover") return <Discover />;
-};
+// const showDiscover = (collection) => {
+//   if (window.location.pathname === "/discover") return <Discover />;
+// };
+
 
 function App() {
   return (
     <div className="App">
       {/* <LandingPage />
       <HomePage /> */}
-      {showLandingPage()}
+      {/* {showLandingPage()}
       {showLoginForm()}
       {showUserForm()}
       {showHome()}
       {showGallery()}
-      {showDiscover()}
+      {showDiscover()} */}
+      <ArtworkDetail />
     </div>
   );
 }
