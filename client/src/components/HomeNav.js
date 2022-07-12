@@ -4,10 +4,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Landing", href: "#", current: true },
+  { name: "Home", href: "#", current: true },
   { name: "Login", href: "#", current: false },
   { name: "Gallery", href: "#", current: false },
-  { name: "Random", href: "#", current: false },
+  { name: "Discover", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -15,9 +15,8 @@ function classNames(...classes) {
 }
 
 export default function HomeNav() {
-
-  const testingPage = () => {
-    window.location.assign("http://localhost:3000/testing")
+  function handleNav(item) {
+    window.location.assign(`http://localhost:3000/${item.name.toLowerCase()}`);
   }
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -54,7 +53,10 @@ export default function HomeNav() {
                     {navigation.map((item) => (
                       <a
                         key={item.name}
-                        onClick={testingPage}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNav(item);
+                        }}
                         href={item.href}
                         className={classNames(
                           item.current
