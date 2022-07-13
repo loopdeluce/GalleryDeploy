@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 
-function LoginForm({ collection: { existingUsers, handleLogin } }) {
+function LoginForm({ collection: { allUsers, handleLogin } }) {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
-  function handleLogin(e) {
+  function onLogin(e) {
     e.preventDefault();
+    console.log("Clicked");
 
-    const authenticatedUser = existingUsers.find(
+    const authenticatedUser = allUsers.find(
       (existingUser) =>
         (existingUser.username === usernameField) &
         (existingUser.password === passwordField)
     );
+    console.log("Authenticated " + authenticatedUser);
     if (authenticatedUser !== undefined) {
       handleLogin(authenticatedUser);
       setUsernameField("");
       setPasswordField("");
       console.log("logged in:", authenticatedUser);
       // Push to discover page?
+      window.location.assign("http://localhost:3000/discover");
     } else {
       alert(
         "Incorrect username and password combination! Our usernames and passwords are case sensitive. Please try again!"
@@ -32,7 +35,7 @@ function LoginForm({ collection: { existingUsers, handleLogin } }) {
           Log in to your account 🔐
         </h1>
 
-        <form onSubmit={(e) => handleLogin(e)}>
+        <form onSubmit={(e) => onLogin(e)}>
           <div>
             {/* <label htmlFor="email">Email</label> */}
             <input

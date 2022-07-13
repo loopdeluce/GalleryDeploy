@@ -2,25 +2,15 @@ import React from "react";
 import Card from "./Card";
 import HomeNav from "./HomeNav";
 
-function Gallery() {
+function Gallery({ favorites }) {
+  let deck = favorites.map((piece) => {
+    return <Card key={piece.id} piece={piece} />;
+  });
   return (
     <div>
-      This is Gallery, just looks the same
       <HomeNav />
       <div className="flex flex-wrap gap-x-8 gap-y-6 justify-center">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {deck}
       </div>
     </div>
   );
