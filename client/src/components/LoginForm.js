@@ -8,7 +8,7 @@ function LoginForm() {
   const { setAuthenicatedUser } = useContext(UserContext);
 
   function fetchUserData() {
-    return fetch("http://127.0.0.1:9393/users").then((r) => r.json());
+    return fetch("http://127.0.0.1:4200/users").then((r) => r.json());
   }
 
   function handleLogin(e) {
