@@ -4,4 +4,5 @@ class ArtworkController < ApplicationController
     Artwork.all.to_json
   end
   
+  
 end
