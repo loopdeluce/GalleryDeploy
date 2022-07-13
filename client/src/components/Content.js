@@ -1,26 +1,21 @@
 import Discover from "./Discover";
-import Card from "./Card";
-import HomeNav from "./HomeNav";
+import { Route, Switch } from "react-router-dom";
+import ArtworkDetail from "./ArtworkDetail";
+import Gallery from "./Gallery";
 
-function Content() {
-  // return <Discover />;
-
+function Content({ artCollection, favorites }) {
   return (
-    <div className="flex flex-wrap gap-x-8 gap-y-6 justify-center">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </div>
+    <Switch>
+      <Route path="/home/discover">
+        <Discover artCollection={artCollection} />
+      </Route>
+      <Route path="/details/:id">
+        <ArtworkDetail />
+      </Route>
+      <Route path="/home/gallery">
+        <Gallery favorites={favorites} />
+      </Route>
+    </Switch>
   );
 }
 

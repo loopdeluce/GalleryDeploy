@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 function LandingPage() {
   const [show, setShow] = useState(false);
   const [images, setImages] = useState([]);
   const [loadImage, setLoadImage] = useState("");
   const [imageTitle, setImageTitle] = useState("");
   const [artistName, setArtistName] = useState("");
+
+  const history = useHistory();
 
   useEffect(() => {
     fetch("http://127.0.0.1:4200/artworks")
@@ -39,7 +43,7 @@ function LandingPage() {
                     <a
                       href
                       onClick={(e) => {
-                        window.location.assign("http://localhost:3000/login");
+                        history.push(`/login`);
                       }}
                     >
                       Log In
@@ -193,7 +197,7 @@ function LandingPage() {
               <div className="w-full flex justify-center md:block">
                 <button
                   onClick={(e) => {
-                    window.location.assign("http://localhost:3000/signup");
+                    history.push(`/signup`);
                   }}
                   className="hover:opacity-90 bg-indigo-700 py-3 px-10 lg:py-7 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
                 >

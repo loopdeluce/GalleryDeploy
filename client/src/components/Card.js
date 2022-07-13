@@ -11,7 +11,10 @@ function Card({ piece }) {
   let favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
 
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg">
+    <div
+      className="max-w-sm rounded-lg overflow-hidden shadow-lg"
+      onClick={(event) => console.log(`${event.target.innerText}`)}
+    >
       <img
         className="w-full"
         src={url}
@@ -25,11 +28,12 @@ function Card({ piece }) {
         </p>
       </div>
       <div
-        onClick={() => {
+        onClick={(event) => {
           setCardFavorited(!cardFavorited);
-          console.log(`Hello from card ${title}`);
+          console.log(`${event.target.innerText}`);
         }}
         className="px-6 pb-2 flex justify-end"
+        id="favorite"
       >
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
           {favoriteButtonSyntax}

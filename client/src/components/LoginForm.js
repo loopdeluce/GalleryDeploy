@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function LoginForm({ collection: { allUsers, handleLogin } }) {
+function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
+
+  const history = useHistory();
 
   function onLogin(e) {
     e.preventDefault();
     console.log("Clicked");
 
-    const authenticatedUser = allUsers.find(
+    const authenticatedUser = existingUsers.find(
       (existingUser) =>
         (existingUser.username === usernameField) &
         (existingUser.password === passwordField)
@@ -16,11 +19,10 @@ function LoginForm({ collection: { allUsers, handleLogin } }) {
     console.log("Authenticated " + authenticatedUser);
     if (authenticatedUser !== undefined) {
       handleLogin(authenticatedUser);
+      fetchUserFavoriteArtworks(authenticatedUser);
       setUsernameField("");
       setPasswordField("");
-      console.log("logged in:", authenticatedUser);
-      // Push to discover page?
-      window.location.assign("http://localhost:3000/discover");
+      history.push(`/home/discover`);
     } else {
       alert(
         "Incorrect username and password combination! Our usernames and passwords are case sensitive. Please try again!"

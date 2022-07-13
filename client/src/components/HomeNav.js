@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useHistory } from "react-router-dom";
 
 const navigation = [
   { name: "Discover", href: "#", current: true },
@@ -13,8 +14,10 @@ function classNames(...classes) {
 }
 
 export default function HomeNav() {
+  const history = useHistory();
+
   function handleNav(item) {
-    window.location.assign(`http://localhost:3000/${item.name.toLowerCase()}`);
+    history.push(`/home/${item.name.toLowerCase()}`);
   }
   return (
     <Disclosure as="nav" className="bg-gray-800">

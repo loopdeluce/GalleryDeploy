@@ -2,40 +2,36 @@
 import "../App.css";
 
 import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import LoginForm from "./LoginForm";
 import NewUserForm from "./NewUserForm";
 import HomePage from "./HomePage";
-// import Content from "./Content";
-import Gallery from "./Gallery";
-import Discover from "./Discover";
-// import ArtworkDetail from "./ArtworkDetail";
 
-// import HomePage from "./HomePage";
+// const showLandingPage = () => {
+//   if (window.location.pathname === "/") return <LandingPage />;
+// };
 
-const showLandingPage = () => {
-  if (window.location.pathname === "/") return <LandingPage />;
-};
+// const showLoginForm = (collection) => {
+//   if (window.location.pathname === "/login")
+//     return <LoginForm collection={collection} />;
+// };
+// const showUserForm = (collection) => {
+//   if (window.location.pathname === "/newuser")
+//     return <NewUserForm collection={collection} />;
+// };
+// const showHome = () => {
+//   if (window.location.pathname === "/home") return <HomePage />;
+// };
+// const showGallery = (collection) => {
+//   if (window.location.pathname === "/gallery")
+//     return <Gallery collection={collection} />;
+// };
 
-const showLoginForm = (collection) => {
-  if (window.location.pathname === "/login")
-    return <LoginForm collection={collection} />;
-};
-const showUserForm = (collection) => {
-  if (window.location.pathname === "/signup")
-    return <NewUserForm collection={collection} />;
-};
-const showHome = () => {
-  if (window.location.pathname === "/home") return <HomePage />;
-};
-const showGallery = () => {
-  if (window.location.pathname === "/gallery") return <Gallery />;
-};
-
-const showDiscover = (collection) => {
-  if (window.location.pathname === "/discover")
-    return <Discover collection={collection} />;
-};
+// const showDiscover = (collection) => {
+//   if (window.location.pathname === "/discover")
+//     return <Discover collection={collection} />;
+// };
 
 function App() {
   const [authenticatedUser, setAuthenticatedUser] = useState({});
@@ -57,20 +53,14 @@ function App() {
 
   function handleLogin(user) {
     setAuthenticatedUser(user);
-    console.log(user);
-    console.log("Calling favorites...");
-    getFavorites(user);
   }
 
-  function getFavorites(authenticatedUser) {
-    fetch(
+  function fetchUserFavoriteArtworks(authenticatedUser) {
+    return fetch(
       `http://127.0.0.1:4200/users/${authenticatedUser.id}?include_artworks`
     )
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data.artworks);
-        setFavorites(data.artworks);
-      });
+      .then((userData) => setFavorites(userData.artworks));
   }
 
   function postNewUser(newUser) {
@@ -85,14 +75,39 @@ function App() {
 
   return (
     <div className="App">
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/login">
+          <LoginForm
+            existingUsers={allUsers}
+            handleLogin={handleLogin}
+            fetchUserFavoriteArtworks={fetchUserFavoriteArtworks}
+          />
+        </Route>
+        <Route path="/signup">
+          <NewUserForm existingUsers={allUsers} postNewUser={postNewUser} />
+        </Route>
+        <Route path="/home">
+          <HomePage artCollection={artCollection} favorites={favorites} />
+        </Route>
+      </Switch>
+
       {/* <LandingPage />
       <HomePage /> */}
-      {showLandingPage()}
-      {showLoginForm({ allUsers, handleLogin })}
+      {/* {showLandingPage()}
+      {showLoginForm({
+        allUsers,
+        handleLogin,
+        fetchUserFavoriteArtworks,
+        handleLoadingFavorites,
+        handleTester,
+      })}
       {showUserForm({ allUsers, postNewUser })}
       {showHome()}
       {showGallery(favorites)}
-      {showDiscover(artCollection)}
+      {showDiscover(artCollection)} */}
       {/* <ArtworkDetail /> */}
     </div>
   );
