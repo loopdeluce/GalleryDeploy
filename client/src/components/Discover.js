@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import HomeNav from "./HomeNav";
 
-function Discover() {
-  const [artCollection, setArtCollection] = useState([]);
-  useEffect(() => {
-    fetch("http://127.0.0.1:4200/artworks")
-      .then((response) => response.json())
-      .then((data) => {
-        setArtCollection(data);
-      });
-  }, []);
-  let deck = artCollection.map((piece) => {
+function Discover({ collection }) {
+  let deck = collection.map((piece) => {
     return <Card key={piece.id} piece={piece} />;
   });
   return (

@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Card({ piece }) {
-  const cardFavorited = true;
+  const [cardFavorited, setCardFavorited] = useState(false);
 
   let title = piece.title;
   let image = piece.img_link;
   let artist = piece.artist;
   let url = `https://www.artic.edu/iiif/2/${image}/full/843,/0/default.jpg`;
 
-  const favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
+  let favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg">
@@ -24,7 +24,13 @@ function Card({ piece }) {
           {artist != null ? artist : "Unknown"}
         </p>
       </div>
-      <div className="px-6 pb-2 flex justify-end">
+      <div
+        onClick={() => {
+          setCardFavorited(!cardFavorited);
+          console.log(`Hello from card ${title}`);
+        }}
+        className="px-6 pb-2 flex justify-end"
+      >
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
           {favoriteButtonSyntax}
         </span>
