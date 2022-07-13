@@ -57,8 +57,8 @@ function App() {
 
   function handleLogin(user) {
     setAuthenticatedUser(user);
-    console.log(user)
-    console.log('Calling favorites...')
+    console.log(user);
+    console.log("Calling favorites...");
     getFavorites(user);
   }
 
