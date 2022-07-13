@@ -197,7 +197,7 @@ function LandingPage() {
           <div className="flex flex-col-reverse md:flex-row">
             <div className="md:w-3/5 md:pt-24 pb-10 lg:py-32 xl:py-48">
               <h1 className="text-3xl lg:text-6xl xl:text-8xl font-black text-gray-900 text-center md:text-left tracking-tighter f-f-i md:w-7/12 leading-tight text-heading-color ">
-                Ill play you in chess in an hour
+                Art Institute of Chicago
               </h1>
               <h2 className="md:w-8/12 py-4 text-center md:text-left md:py-8 text-gray-700 text-lg lg:text-2xl">
                 Assemble your gallery.{" "}
