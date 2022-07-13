@@ -1,14 +1,20 @@
 import React from "react";
 import Card from "./Card";
-import HomeNav from "./HomeNav";
 
 function Gallery({ favorites }) {
-  let deck = favorites.map((piece) => {
-    return <Card key={piece.id} piece={piece} />;
-  });
+  let deck;
+
+  console.log(favorites);
+
+  if (favorites.length === 0) {
+    deck = <h1>You have don't have any favorites yet!</h1>;
+  } else {
+    deck = favorites.map((piece) => {
+      return <Card key={piece.id} piece={piece} />;
+    });
+  }
   return (
     <div>
-      <HomeNav />
       <div className="flex flex-wrap gap-x-8 gap-y-6 justify-center">
         {deck}
       </div>

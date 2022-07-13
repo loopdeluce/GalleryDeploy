@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewUserForm({ collection: { allUsers, postNewUser } }) {
+function NewUserForm({ existingUsers, postNewUser }) {
   const [firstNameField, setFirstNameField] = useState("");
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
@@ -8,7 +8,7 @@ function NewUserForm({ collection: { allUsers, postNewUser } }) {
   function registerNewUser(e) {
     e.preventDefault();
 
-    const existingUsername = allUsers.find(
+    const existingUsername = existingUsers.find(
       (existingUser) => existingUser.username === usernameField
     );
     if (existingUsername !== undefined) {
