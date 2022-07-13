@@ -1,37 +1,28 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "../context/user";
+import React, { useState } from "react";
 
-function LoginForm() {
+function LoginForm({ collection: { existingUsers, handleLogin } }) {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
-
-  const { setAuthenicatedUser } = useContext(UserContext);
-
-  function fetchUserData() {
-    return fetch("http://127.0.0.1:4200/users").then((r) => r.json());
-  }
 
   function handleLogin(e) {
     e.preventDefault();
 
-    fetchUserData().then((appUserData) => {
-      const authenticatedUser = appUserData.find(
-        (existingUser) =>
-          (existingUser.username === usernameField) &
-          (existingUser.password === passwordField)
+    const authenticatedUser = existingUsers.find(
+      (existingUser) =>
+        (existingUser.username === usernameField) &
+        (existingUser.password === passwordField)
+    );
+    if (authenticatedUser !== undefined) {
+      handleLogin(authenticatedUser);
+      setUsernameField("");
+      setPasswordField("");
+      console.log("logged in:", authenticatedUser);
+      // Push to discover page?
+    } else {
+      alert(
+        "Incorrect username and password combination! Our usernames and passwords are case sensitive. Please try again!"
       );
-      if (authenticatedUser !== undefined) {
-        setAuthenicatedUser(authenticatedUser);
-        setUsernameField("");
-        setPasswordField("");
-        console.log("logged in:", authenticatedUser);
-        // Push to discover page?
-      } else {
-        alert(
-          "Incorrect username and password combination! Our usernames and passwords are case sensitive. Please try again!"
-        );
-      }
-    });
+    }
   }
 
   return (
