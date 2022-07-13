@@ -17,4 +17,5 @@ class ArtworkController < ApplicationController
     @artwork = Artwork.find(params[:id])
   end
   
+  
 end
