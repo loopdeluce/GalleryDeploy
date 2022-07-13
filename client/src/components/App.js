@@ -31,11 +31,20 @@ const showGallery = () => {
 };
 
 const showDiscover = (collection) => {
-  if (window.location.pathname === "/discover") return <Discover />;
+  if (window.location.pathname === "/discover")
+    return <Discover collection={collection} />;
 };
 
 function App() {
-  useEffect(() => {}, []);
+  const [artCollection, setArtCollection] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:4200/artworks")
+      .then((response) => response.json())
+      .then((data) => {
+        setArtCollection(data);
+      });
+  }, []);
   return (
     <div className="App">
       {/* <LandingPage />
@@ -45,7 +54,7 @@ function App() {
       {showUserForm()}
       {showHome()}
       {showGallery()}
-      {showDiscover()}
+      {showDiscover(artCollection)}
       {/* <ArtworkDetail /> */}
     </div>
   );
