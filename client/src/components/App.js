@@ -17,11 +17,13 @@ const showLandingPage = () => {
   if (window.location.pathname === "/") return <LandingPage />;
 };
 
-const showLoginForm = () => {
-  if (window.location.pathname === "/login") return <LoginForm />;
+const showLoginForm = (collection) => {
+  if (window.location.pathname === "/login")
+    return <LoginForm collection={collection} />;
 };
-const showUserForm = () => {
-  if (window.location.pathname === "/signup") return <NewUserForm />;
+const showUserForm = (collection) => {
+  if (window.location.pathname === "/signup")
+    return <NewUserForm collection={collection} />;
 };
 const showHome = () => {
   if (window.location.pathname === "/home") return <HomePage />;
@@ -35,14 +37,36 @@ const showDiscover = (collection) => {
 };
 
 function App() {
-  useEffect(() => {}, []);
+  const [authenticatedUser, setAuthenticatedUser] = useState({});
+  const [allUsers, setAllUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:9393//users")
+      .then((r) => r.json())
+      .then((allUserData) => setAllUsers(allUserData));
+  }, []);
+
+  function handleLogin(user) {
+    setAuthenticatedUser(user);
+  }
+
+  function postNewUser(newUser) {
+    return fetch("http://127.0.0.1:9393/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    })
+      .then((r) => r.json())
+      .then((newUser) => handleLogin(newUser));
+  }
+
   return (
     <div className="App">
       {/* <LandingPage />
       <HomePage /> */}
       {showLandingPage()}
-      {showLoginForm()}
-      {showUserForm()}
+      {showLoginForm({ allUsers, handleLogin })}
+      {showUserForm({ allUsers, postNewUser })}
       {showHome()}
       {showGallery()}
       {showDiscover()}

@@ -1,53 +1,32 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "../context/user";
+import React, { useState } from "react";
 
-function NewUserForm({ handleClick }) {
+function NewUserForm({ collection: { allUsers, postNewUser } }) {
   const [firstNameField, setFirstNameField] = useState("");
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
-  const { setAuthenicatedUser, user } = useContext(UserContext);
-
-  function fetchUserData() {
-    return fetch("http://127.0.0.1:9393/users").then((r) => r.json());
-  }
-
-  function postNewUser() {
-    const newUser = {
-      username: usernameField,
-      first_name: firstNameField,
-      password: passwordField,
-    };
-
-    return fetch("http://127.0.0.1:9393/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser),
-    }).then((r) => r.json());
-  }
-
   function registerNewUser(e) {
     e.preventDefault();
 
-    fetchUserData().then((appUserData) => {
-      const existingUsername = appUserData.find(
-        (existingUser) => existingUser.username === usernameField
+    const existingUsername = allUsers.find(
+      (existingUser) => existingUser.username === usernameField
+    );
+    if (existingUsername !== undefined) {
+      alert(
+        "Username already exists! Our usernames are case sensitive. Please try again!"
       );
-      if (existingUsername !== undefined) {
-        alert(
-          "Username already exists! Our usernames are case sensitive. Please try again!"
-        );
-      } else {
-        postNewUser().then((newUser) => {
-          setAuthenicatedUser(newUser);
-          setUsernameField("");
-          setPasswordField("");
-          console.log("logged in");
-          console.log(user);
-          // Push to discover page?
-        });
-      }
-    });
+    } else {
+      const newUser = {
+        username: usernameField,
+        first_name: firstNameField,
+        password: passwordField,
+      };
+      postNewUser(newUser);
+      setUsernameField("");
+      setPasswordField("");
+      console.log("logged in");
+      // Push to discover page?
+    }
   }
 
   return (
