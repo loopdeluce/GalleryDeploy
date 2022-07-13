@@ -35,18 +35,6 @@ function LandingPage() {
               </div>
               <div className="md:w-1/2 xl:w-1/3">
                 <ul className="flex justify-between w-full items-center text-gray-600">
-                  {/* <li className="border-b-4 border-indigo-600 pb-1">
-                    <a href>Home</a>
-                  </li>
-                  <li className="border-b-4 border-transparent pb-1">
-                    <a href>Stats</a>
-                  </li>
-                  <li className="border-b-4 border-transparent pb-1">
-                    <a href>Coins</a>
-                  </li> */}
-                  {/* <li className="border-b-4 border-transparent pb-1">
-                    <a href>Discover</a>
-                  </li> */}
                   <li className="border-b-4 border-transparent pb-1">
                     <a
                       href
