@@ -38,17 +38,17 @@ const showDiscover = (collection) => {
 };
 
 function App() {
-
   const [authenticatedUser, setAuthenticatedUser] = useState({});
   const [allUsers, setAllUsers] = useState([]);
   const [artCollection, setArtCollection] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:9393//users")
+    fetch("http://127.0.0.1:4200//users")
       .then((r) => r.json())
       .then((allUserData) => setAllUsers(allUserData));
-      
-      fetch("http://127.0.0.1:4200/artworks")
+
+    fetch("http://127.0.0.1:4200/artworks")
       .then((response) => response.json())
       .then((data) => {
         setArtCollection(data);
@@ -57,10 +57,24 @@ function App() {
 
   function handleLogin(user) {
     setAuthenticatedUser(user);
+    console.log(user)
+    console.log('Calling favorites...')
+    getFavorites(user);
+  }
+
+  function getFavorites(authenticatedUser) {
+    fetch(
+      `http://127.0.0.1:4200/users/${authenticatedUser.id}?include_artworks`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.artworks);
+        setFavorites(data.artworks);
+      });
   }
 
   function postNewUser(newUser) {
-    return fetch("http://127.0.0.1:9393/users", {
+    fetch("http://127.0.0.1:4200/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
@@ -68,7 +82,6 @@ function App() {
       .then((r) => r.json())
       .then((newUser) => handleLogin(newUser));
   }
-
 
   return (
     <div className="App">
@@ -78,7 +91,7 @@ function App() {
       {showLoginForm({ allUsers, handleLogin })}
       {showUserForm({ allUsers, postNewUser })}
       {showHome()}
-      {showGallery()}
+      {showGallery(favorites)}
       {showDiscover(artCollection)}
       {/* <ArtworkDetail /> */}
     </div>
