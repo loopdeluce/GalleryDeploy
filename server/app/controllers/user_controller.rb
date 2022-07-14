@@ -33,7 +33,7 @@ class UserController < ApplicationController
   patch '/users/:id/favorite' do
     find_user
 
-    updated_user = @user.remove_favorites(artwork)
+    updated_user = @user.remove_favorites(params[:artwork_id])
     updated_user.to_json
   end
 
