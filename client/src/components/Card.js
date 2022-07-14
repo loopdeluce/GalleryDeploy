@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function Card({ piece }) {
+function Card({ piece, getArtworkDetails }) {
   const [cardFavorited, setCardFavorited] = useState(false);
+  const history = useHistory();
 
-  let title = piece.title;
-  let image = piece.img_link;
-  let artist = piece.artist;
-  let url = `https://www.artic.edu/iiif/2/${image}/full/843,/0/default.jpg`;
+  const { title, img_link, artist, key } = piece;
+  const url = `https://www.artic.edu/iiif/2/${img_link}/full/843,/0/default.jpg`;
+  const favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
 
-  let favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
+  function showArtworkDetails(event) {
+    if (event.target.innerText !== favoriteButtonSyntax) {
+      getArtworkDetails(key).then(() => history.push("/home/details"));
+    }
+  }
 
   return (
     <div
       className="max-w-sm rounded-lg overflow-hidden shadow-lg"
-      onClick={(event) => console.log(`${event.target.innerText}`)}
+      onClick={showArtworkDetails}
     >
       <img
         className="w-full"
@@ -30,12 +35,11 @@ function Card({ piece }) {
       <div
         onClick={(event) => {
           setCardFavorited(!cardFavorited);
-          console.log(`${event.target.innerText}`);
         }}
         className="px-6 pb-2 flex justify-end"
         id="favorite"
       >
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2 focus:outline-none hover:bg-gray-300">
           {favoriteButtonSyntax}
         </span>
       </div>

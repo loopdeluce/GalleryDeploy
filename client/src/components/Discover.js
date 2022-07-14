@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Discover({ artCollection }) {
+function Discover({ artCollection, getArtworkDetails }) {
   let deck = artCollection.map((piece) => {
-    return <Card key={piece.id} piece={piece} />;
+    return (
+      <Card
+        key={piece.id}
+        piece={piece}
+        getArtworkDetails={getArtworkDetails}
+      />
+    );
   });
   return (
     <div>
