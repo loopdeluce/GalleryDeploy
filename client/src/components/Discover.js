@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Discover({ artCollection, getArtworkDetails }) {
+function Discover({
+  artCollection,
+  getArtworkDetails,
+  addToFavorites,
+  favorites,
+}) {
   const artToFetch = artCollection.slice(0, 50);
   let deck = artToFetch.map((piece) => {
     return (
@@ -9,6 +14,8 @@ function Discover({ artCollection, getArtworkDetails }) {
         key={piece.id}
         piece={piece}
         getArtworkDetails={getArtworkDetails}
+        addToFavorites={addToFavorites}
+        favorites={favorites}
       />
     );
   });

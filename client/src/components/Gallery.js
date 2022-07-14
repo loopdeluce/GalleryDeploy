@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-function Gallery({ favorites, getArtworkDetails }) {
+function Gallery({ favorites, addToFavorites, getArtworkDetails }) {
   let deck;
 
   if (favorites.length === 0) {
@@ -12,6 +12,8 @@ function Gallery({ favorites, getArtworkDetails }) {
         <Card
           key={piece.id}
           piece={piece}
+          addToFavorites={addToFavorites}
+          favorites={favorites}
           getArtworkDetails={getArtworkDetails}
         />
       );

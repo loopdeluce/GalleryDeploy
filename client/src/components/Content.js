@@ -5,7 +5,12 @@ import Gallery from "./Gallery";
 import { useState } from "react";
 import UpdateAccountForm from "./UpdateAccountForm";
 
-function Content({ artCollection, favorites, authenticatedUser }) {
+function Content({
+  artCollection,
+  favorites,
+  authenticatedUser,
+  addToFavorites,
+}) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
   function getArtworkDetails(id) {
@@ -21,7 +26,8 @@ function Content({ artCollection, favorites, authenticatedUser }) {
       <Route path="/home/discover">
         <Discover
           artCollection={artCollection}
-          getArtworkDetails={getArtworkDetails}
+          addToFavorites={addToFavorites}
+          favorites={favorites}
         />
       </Route>
       <Route path="/home/details">
