@@ -36,13 +36,23 @@ function App() {
           user_id: authenticatedUser.id,
           artwork_id: piece.id,
         }),
-      }).then(console.log("Did it"));
+      }).then(setFavorites([...favorites, piece]));
     }
 
     if (e.target.innerText === "♥ Favorited") {
       console.log(authenticatedUser.first_name + " favorited " + piece.title);
-      fetch("http://127.0.0.1:4200/favorites/", {
-        method: "DELETE",
+      fetch(
+        `http://localhost:4200/users/${authenticatedUser.id}/removefavorite`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ artwork_id: piece.id }),
+        }
+      ).then(() => {
+        let updated = favorites.filter((c) => {
+          return c.id !== piece.id;
+        });
+        setFavorites(updated);
       });
     }
   }
