@@ -3,7 +3,13 @@ import HomeNav from "./HomeNav";
 import Content from "./Content";
 import SearchBar from "./SearchBar";
 
-function HomePage({ artCollection, favorites, addToFavorites }) {
+function HomePage({
+  artCollection,
+  favorites,
+  addToFavorites,
+  authenticatedUser,
+  handleLogout,
+}) {
   // console.log(favorites);
   return (
     <>

@@ -38,7 +38,7 @@ function Content({
         )}
       </Route>
       <Route path="/home/gallery">
-        <Gallery favorites={favorites} getArtworkDetails={getArtworkDetails} />
+        <Gallery favorites={favorites} addToFavorites={addToFavorites} getArtworkDetails={getArtworkDetails} />
       </Route>
       <Route path="/home/updateaccount">
         <UpdateAccountForm authenticatedUser={authenticatedUser} />
