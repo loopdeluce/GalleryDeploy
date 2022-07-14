@@ -4,8 +4,6 @@ import Card from "./Card";
 function Gallery({ favorites, getArtworkDetails }) {
   let deck;
 
-  console.log(favorites);
-
   if (favorites.length === 0) {
     deck = <h1>You have don't have any favorites yet!</h1>;
   } else {

@@ -4,7 +4,6 @@ import Content from "./Content";
 import SearchBar from "./SearchBar";
 
 function HomePage({ artCollection, favorites }) {
-  console.log(favorites);
   return (
     <>
       <HomeNav />

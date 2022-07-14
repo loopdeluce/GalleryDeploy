@@ -30,6 +30,10 @@ function App() {
     setAuthenticatedUser(user);
   }
 
+  function handleLogout() {
+    setAuthenticatedUser({});
+  }
+
   function fetchUserFavoriteArtworks(authenticatedUser) {
     return fetch(
       `http://127.0.0.1:4200/users/${authenticatedUser.id}?include_artworks`
@@ -69,7 +73,12 @@ function App() {
           />
         </Route>
         <Route path="/home">
-          <HomePage artCollection={artCollection} favorites={favorites} />
+          <HomePage
+            artCollection={artCollection}
+            favorites={favorites}
+            authenticatedUser={authenticatedUser}
+            handleLogout={handleLogout}
+          />
         </Route>
       </Switch>
     </div>
