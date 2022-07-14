@@ -25,9 +25,9 @@ class UserController < ApplicationController
 
   patch '/users/:id' do
     find_user
-
-    updated_user = @user.update(user_params)
-    updated_user.to_json
+    # binding.pry
+    @user.update(user_params)
+    @user.to_json
   end
 
   patch '/users/:id/removefavorite' do
