@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
 function Discover({ artCollection, getArtworkDetails }) {
-  let deck = artCollection.map((piece) => {
+  const artToFetch = artCollection.slice(0, 50);
+  let deck = artToFetch.map((piece) => {
     return (
       <Card
         key={piece.id}

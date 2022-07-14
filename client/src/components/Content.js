@@ -3,8 +3,9 @@ import { Route, Switch } from "react-router-dom";
 import ArtworkDetail from "./ArtworkDetail";
 import Gallery from "./Gallery";
 import { useState } from "react";
+import UpdateAccountForm from "./UpdateAccountForm";
 
-function Content({ artCollection, favorites }) {
+function Content({ artCollection, favorites, authenticatedUser }) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
   function getArtworkDetails(id) {
@@ -32,6 +33,9 @@ function Content({ artCollection, favorites }) {
       </Route>
       <Route path="/home/gallery">
         <Gallery favorites={favorites} getArtworkDetails={getArtworkDetails} />
+      </Route>
+      <Route path="/home/updateaccount">
+        <UpdateAccountForm authenticatedUser={authenticatedUser} />
       </Route>
     </Switch>
   );

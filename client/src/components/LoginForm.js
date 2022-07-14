@@ -16,6 +16,7 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
         (existingUser.password === passwordField)
     );
     if (authenticatedUser !== undefined) {
+      console.log(authenticatedUser);
       handleLogin(authenticatedUser);
       fetchUserFavoriteArtworks(authenticatedUser);
       setUsernameField("");
