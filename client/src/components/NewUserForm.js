@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function NewUserForm({ existingUsers, postNewUser }) {
+function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
   const [firstNameField, setFirstNameField] = useState("");
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
+
+  const history = useHistory();
 
   function registerNewUser(e) {
     e.preventDefault();
@@ -22,10 +25,10 @@ function NewUserForm({ existingUsers, postNewUser }) {
         password: passwordField,
       };
       postNewUser(newUser);
+      handleLogin(newUser);
       setUsernameField("");
       setPasswordField("");
-      console.log("logged in");
-      // Push to discover page?
+      history.push("/home/discover");
     }
   }
 
