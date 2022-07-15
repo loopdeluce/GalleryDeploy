@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-function UpdateAccountForm({ authenticatedUser }) {
-  console.log(authenticatedUser);
-
-  const [formData, setFormData] = useState({ authenticatedUser });
+function UpdateAccountForm({ authenticatedUser, updateAuthenticatedUser }) {
+  const [formData, setFormData] = useState(authenticatedUser);
   const history = useHistory();
 
   function handleChange(e) {
@@ -14,33 +12,21 @@ function UpdateAccountForm({ authenticatedUser }) {
     setFormData(updatedForm);
   }
 
-  function updateAccount() {
-    console.log("Save was clicked");
+  function patchUserUpdate() {
+    return fetch(`http://127.0.0.1:4200/users/${authenticatedUser.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).then((response) => response.json());
   }
 
-  // function registerNewUser(e) {
-  //   e.preventDefault();
-
-  //   const existingUsername = existingUsers.find(
-  //     (existingUser) => existingUser.username === usernameField
-  //   );
-  //   if (existingUsername !== undefined) {
-  //     alert(
-  //       "Username already exists! Our usernames are case sensitive. Please try again!"
-  //     );
-  //   } else {
-  //     const newUser = {
-  //       username: usernameField,
-  //       first_name: firstNameField,
-  //       password: passwordField,
-  //     };
-  //     postNewUser(newUser);
-  //     handleLogin(newUser);
-  //     setUsernameField("");
-  //     setPasswordField("");
-  //     history.push("/home/discover");
-  //   }
-  // }
+  function updateAccount(event) {
+    event.preventDefault();
+    patchUserUpdate().then((updatedUser) => {
+      updateAuthenticatedUser(updatedUser);
+      alert("Your account has been updated!");
+    });
+  }
 
   return (
     <div className="h-screen flex bg-grey-bg1">

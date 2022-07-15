@@ -30,18 +30,13 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
   }
 
   return (
-    <div className="h-screen flex bg-grey-bg1">
-      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
-        <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
-          Log in to your account 🔐
-        </h1>
-
+    <div className="mb-6 shadow-lg">
+      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-6 px-16">
         <form onSubmit={(e) => onLogin(e)}>
           <div>
-            {/* <label htmlFor="email">Email</label> */}
             <input
               type="username"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-slate-700 border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               id="username"
               placeholder="Your Username"
               onChange={(e) => {
@@ -50,10 +45,9 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
             />
           </div>
           <div>
-            {/* <label htmlFor="password">Password</label> */}
             <input
               type="password"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2  border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               id="password"
               placeholder="Your Password"
               onChange={(e) => {
@@ -62,16 +56,27 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
             />
           </div>
 
-          <div className="flex justify-center items-center mt-6">
+          <div className="flex justify-center items-center mt-3">
             <button
               type="submit"
               onClick={(e) => {}}
-              className={`bg-green py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark`}
+              className="hover:opacity-90 bg-indigo-400 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
             >
               Login
             </button>
           </div>
         </form>
+        <div className="border border-primaryBorder my-6"></div>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={(e) => {
+              history.push(`/signup`);
+            }}
+            className="hover:opacity-90 bg-indigo-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
     </div>
   );

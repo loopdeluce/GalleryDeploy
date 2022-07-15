@@ -15,11 +15,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function HomeNav() {
+export default function HomeNav({ handleLogout }) {
   const history = useHistory();
 
   function handleNav(item) {
     if (item.name === "Logout") {
+      handleLogout({});
       history.push(`/`);
     } else if (item.name === "Update Account") {
       history.push(`/home/updateaccount`);

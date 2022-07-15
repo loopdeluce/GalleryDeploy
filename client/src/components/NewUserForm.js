@@ -33,18 +33,21 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
   }
 
   return (
-    <div className="h-screen flex bg-grey-bg1">
-      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
-        <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
-          Create an account 👾
+    <div className="mb-6 shadow-lg">
+      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-4 px-16">
+        <h1 className="text-2xl font-medium text-gray-700 mt-2 text-center">
+          Create an Account
         </h1>
-
+        <h2 className="text-s text-gray-700 mb-4 text-center">
+          It's quick and easy.
+        </h2>
+        <div className="border border-primaryBorder my-6"></div>
         <form onSubmit={(e) => registerNewUser(e)}>
           <div>
             {/* <label htmlFor="Field">First name</label> */}
             <input
               type="firstName"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               id="firstName"
               placeholder="First name"
               onChange={(e) => {
@@ -68,7 +71,7 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
             {/* <label htmlFor="password">Password</label> */}
             <input
               type="password"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50"
               id="password"
               placeholder="Password"
               onChange={(e) => {
@@ -77,13 +80,13 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
             />
           </div>
 
-          <div className="flex justify-center items-center mt-6">
+          <div className="flex justify-center items-center mt-3">
             <button
               type="submit"
-              onClick={(e) => {}}
-              className={`bg-green py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark`}
+              onClick={registerNewUser}
+              className="hover:opacity-90 bg-indigo-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
             >
-              Create Account
+              Sign Up
             </button>
           </div>
         </form>
