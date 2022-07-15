@@ -18,13 +18,13 @@ code {
 
 .wrapper {
   /* Prevent vertical gaps */
-  line-height: 0;
+  line-height: 20px;
 
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
   -moz-column-count: 5;
   -moz-column-gap: 0px;
   column-count: 4;
-  column-gap: 3px;
-  row-gap: 3px;
+  column-gap: 10px;
+  row-gap: 20px;
 }
