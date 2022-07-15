@@ -17,7 +17,7 @@ function App() {
       .then((r) => r.json())
       .then((allUserData) => setAllUsers(allUserData));
     fetchArtwork();
-  }, []);
+  }, [authenticatedUser]);
 
   function fetchArtwork() {
     fetch("http://127.0.0.1:4200/artworks")
