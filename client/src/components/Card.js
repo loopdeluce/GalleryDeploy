@@ -17,7 +17,9 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
       event.target.innerText !== "♥ Favorited" &&
       event.target.innerText !== "♡ Favorite"
     ) {
-      getArtworkDetails(key).then(() => history.push("/home/details"));
+      getArtworkDetails(key, piece.id).then(() =>
+        history.push("/home/details")
+      );
     }
   }
 
