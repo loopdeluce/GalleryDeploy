@@ -29,7 +29,7 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
       onClick={showArtworkDetails}
     >
       <img className="w-full" src={url} alt="Sunset in the mountains"></img>
-      <div className="px-6 pt-4">
+      <div className="pt-4 px-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">
           {artist != null ? artist : "Unknown"}

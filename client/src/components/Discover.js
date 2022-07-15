@@ -26,7 +26,7 @@ function Discover({
   return (
     <>
       <div>
-        <div className="wrapper justify-center">{deck}</div>
+        <div className="wrapper justify-center mx-6">{deck}</div>
       </div>
       <div className="flex justify-center my-8">
         <button
