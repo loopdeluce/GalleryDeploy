@@ -9,7 +9,8 @@ function Content({
   artCollection,
   favorites,
   authenticatedUser,
-  addToFavorites,
+  updateAuthenticatedUser,
+  addToFavorites
 }) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
@@ -31,17 +32,16 @@ function Content({
         />
       </Route>
       <Route path="/home/details">
-        {artworkDetails ? (
-          <ArtworkDetail artworkDetails={artworkDetails} />
-        ) : (
-          <h1>Loading</h1>
-        )}
+        <ArtworkDetail artworkDetails={artworkDetails} />
       </Route>
       <Route path="/home/gallery">
         <Gallery favorites={favorites} addToFavorites={addToFavorites} getArtworkDetails={getArtworkDetails} />
       </Route>
       <Route path="/home/updateaccount">
-        <UpdateAccountForm authenticatedUser={authenticatedUser} />
+        <UpdateAccountForm
+          authenticatedUser={authenticatedUser}
+          updateAuthenticatedUser={updateAuthenticatedUser}
+        />
       </Route>
     </Switch>
   );

@@ -6,18 +6,20 @@ import SearchBar from "./SearchBar";
 function HomePage({
   artCollection,
   favorites,
-  addToFavorites,
   authenticatedUser,
-  handleLogout,
+  updateAuthenticatedUser,
+  addToFavorites
 }) {
-  // console.log(favorites);
   return (
     <>
-      <HomeNav />
-      {/* <SearchBar /> */}
+
+      <HomeNav handleLogout={updateAuthenticatedUser} />
+      <SearchBar />
       <Content
         artCollection={artCollection}
         favorites={favorites}
+        authenticatedUser={authenticatedUser}
+        updateAuthenticatedUser={updateAuthenticatedUser}
         addToFavorites={addToFavorites}
       />
     </>
