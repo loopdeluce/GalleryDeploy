@@ -21,11 +21,7 @@ function Gallery({ favorites, addToFavorites, getArtworkDetails }) {
       );
     });
   }
-  return (
-    <div className="flex items-start flex-wrap gap-x-8 gap-y-6  justify-center">
-      {deck}
-    </div>
-  );
+  return <div className="wrapper">{deck}</div>;
 }
 
 export default Gallery;
