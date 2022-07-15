@@ -1,15 +1,14 @@
 function ArtworkDetail({ artworkDetails, favorites, addToFavorites }) {
   const tog = favorites.find((c) => {
-    return c.key === artworkDetails.internalId;
+    return c.id === artworkDetails.internalId;
   });
-  console.log("favorites:", favorites);
-  console.log(tog ? "♥ Favorited" : "♡ Favorite");
 
   const piece = {
     title: artworkDetails.title,
     img_link: artworkDetails.image_id,
     artist: artworkDetails.artist_display,
     key: artworkDetails.id,
+    id: artworkDetails.internalId,
   };
 
   return (

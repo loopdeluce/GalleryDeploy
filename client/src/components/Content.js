@@ -15,15 +15,15 @@ function Content({
 }) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
-  function getArtworkDetails(id) {
-    return fetch(`https://api.artic.edu/api/v1/artworks/${id}`)
+  function getArtworkDetails(key, id) {
+    return fetch(`https://api.artic.edu/api/v1/artworks/${key}`)
       .then((r) => r.json())
       .then((artworkDetails) => {
         setArtworkDetails({ internalId: id, ...artworkDetails.data });
       });
   }
 
-  console.log(artworkDetails);
+  console.log(favorites);
   return (
     <Switch>
       <Route path="/home/discover">
