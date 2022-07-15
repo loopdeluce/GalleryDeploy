@@ -25,7 +25,7 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
 
   return (
     <div
-      className="h-fit max-w rounded-lg overflow-hidden shadow-lg my-6"
+      className="h-fit mx-6 max-w rounded-lg overflow-hidden shadow-lg my-6"
       onClick={showArtworkDetails}
     >
       <img className="w-full" src={url} alt="Sunset in the mountains"></img>
