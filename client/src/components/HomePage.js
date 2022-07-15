@@ -12,6 +12,7 @@ function HomePage({
 }) {
   return (
     <>
+
       <HomeNav handleLogout={updateAuthenticatedUser} />
       <SearchBar />
       <Content
