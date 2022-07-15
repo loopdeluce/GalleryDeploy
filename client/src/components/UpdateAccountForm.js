@@ -29,49 +29,48 @@ function UpdateAccountForm({ authenticatedUser, updateAuthenticatedUser }) {
   }
 
   return (
-    <div className="h-screen flex bg-grey-bg1">
-      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
-        <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
-          Update your account
+    <div className="mt-20 flex bg-grey-bg1">
+      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-4 px-16">
+        <h1 className="text-2xl font-medium text-primary mt-2 mb-6 text-center">
+          Update Your Account Details
         </h1>
 
         <form onSubmit={updateAccount}>
           <div>
-            {/* <label htmlFor="Field">First name</label> */}
             <input
               type="firstName"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               name="first_name"
+              placeholder="Your first name"
               value={formData.first_name}
               onChange={handleChange}
             />
           </div>
           <div>
-            {/* <label htmlFor="username">Username</label> */}
             <input
               type="username"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               name="username"
+              placeholder="Your username"
               value={formData.username}
               onChange={handleChange}
             />
           </div>
           <div>
-            {/* <label htmlFor="password">Password</label> */}
             <input
               type="password"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50`}
+              className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-100 ease-in-out mb-4 bg-slate-50"
               name="password"
+              placeholder="Your password"
               value={formData.password}
               onChange={handleChange}
             />
           </div>
 
-          <div className="flex justify-center items-center mt-6">
+          <div className="flex justify-center items-center mt-3">
             <button
               type="submit"
-              onClick={(e) => {}}
-              className={`bg-green py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark`}
+              className="hover:bg-orange-500 bg-orange-400 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
             >
               Update Account
             </button>

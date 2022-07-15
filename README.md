@@ -6,6 +6,20 @@ Login to your user account, browse the art of The Art Institute of Chicago and s
 
 Will be using The Art Insistute of Chicago's API: https://api.artic.edu/docs/#introduction
 
+## Available Scripts
+
+To get started in your terminal:
+
+### `cd client`
+
+### `npm start`
+
+### `cd ..`
+
+### `cd server`
+
+### `shotgun -p 4200`
+
 ## User Stories
 
 As a user I can..

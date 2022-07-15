@@ -10,6 +10,11 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
   function onLogin(e) {
     e.preventDefault();
 
+    if (usernameField === "" || passwordField === "") {
+      alert("Please do not leave your username or password empty!");
+      return null;
+    }
+
     const authenticatedUser = existingUsers.find(
       (existingUser) =>
         (existingUser.username === usernameField) &
@@ -60,7 +65,7 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
             <button
               type="submit"
               onClick={(e) => {}}
-              className="hover:opacity-90 bg-indigo-400 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
+              className="hover:opacity-90 bg-orange-400 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
             >
               Login
             </button>
@@ -72,7 +77,7 @@ function LoginForm({ existingUsers, handleLogin, fetchUserFavoriteArtworks }) {
             onClick={(e) => {
               history.push(`/signup`);
             }}
-            className="hover:opacity-90 bg-indigo-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
+            className="hover:opacity-90 bg-orange-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
           >
             Sign Up
           </button>

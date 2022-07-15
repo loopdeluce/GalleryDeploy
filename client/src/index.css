@@ -17,14 +17,10 @@ code {
 }
 
 .wrapper {
-  /* Prevent vertical gaps */
-  line-height: 20px;
-
-  -webkit-column-count: 5;
-  -webkit-column-gap: 0px;
-  -moz-column-count: 5;
-  -moz-column-gap: 0px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 10px;
+  -moz-column-count: 3;
+  -moz-column-gap: 10px;
   column-count: 4;
-  column-gap: 10px;
-  row-gap: 20px;
+  column-gap: 20px;
 }

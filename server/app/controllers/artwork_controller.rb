@@ -1,7 +1,10 @@
+require 'Pry'
+
 class ArtworkController < ApplicationController
 
   get "/artworks" do
-    Artwork.all.to_json
+    artworks = Artwork.fetchOneThousandRandomArtworks
+    artworks.to_json
   end
 
   delete "/artworks/:id" do

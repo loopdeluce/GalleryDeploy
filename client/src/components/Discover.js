@@ -6,11 +6,10 @@ function Discover({
   getArtworkDetails,
   addToFavorites,
   favorites,
+  fetchArtwork,
 }) {
-  const artToFetch = artCollection.slice(0, 50);
-  let deck = artToFetch.map((piece) => {
+  let deck = artCollection.map((piece) => {
     return (
-      // <div className="">
       <Card
         key={piece.id}
         piece={piece}
@@ -18,16 +17,27 @@ function Discover({
         addToFavorites={addToFavorites}
         favorites={favorites}
       />
-      // </div>
     );
   });
+
+  function handleMoreArtwork() {
+    window.scrollTo(0, 0);
+    fetchArtwork();
+  }
   return (
-    <div>
-      {/* <div className="flex flex-wrap  gap-x-8 gap-y-6 content-start justify-center"> */}
-      <div className="wrapper">
-        {deck}
+    <>
+      <div>
+        <div className="wrapper">{deck}</div>
       </div>
-    </div>
+      <div className="flex justify-center my-8">
+        <button
+          onClick={handleMoreArtwork}
+          className="hover:bg-orange-500 bg-orange-400 pt-2 pb-3 px-6 lg:py-3 lg:px-40 rounded-full text-white text-sm md:text-lg f-f-p "
+        >
+          View More Artwork
+        </button>
+      </div>
+    </>
   );
 }
 

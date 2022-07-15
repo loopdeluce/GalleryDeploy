@@ -16,19 +16,21 @@ function App() {
     fetch("http://127.0.0.1:4200//users")
       .then((r) => r.json())
       .then((allUserData) => setAllUsers(allUserData));
+    fetchArtwork();
+  }, []);
 
+  function fetchArtwork() {
     fetch("http://127.0.0.1:4200/artworks")
       .then((response) => response.json())
       .then((data) => {
         setArtCollection(data);
       });
-  }, []);
-
+  }
 
   function updateAuthenticatedUser(user) {
     setAuthenticatedUser(user);
   }
-  
+
   function addToFavorites(piece, e) {
     if (e.target.innerText === "♡ Favorite") {
       console.log(authenticatedUser.first_name + " unfavorited " + piece.title);
@@ -60,9 +62,6 @@ function App() {
     }
   }
 
-
-
-
   function fetchUserFavoriteArtworks(authenticatedUser) {
     return fetch(
       `http://127.0.0.1:4200/users/${authenticatedUser.id}?include_artworks`
@@ -90,6 +89,8 @@ function App() {
             favorites={favorites}
             authenticatedUser={authenticatedUser}
             addToFavorites={addToFavorites}
+            updateAuthenticatedUser={updateAuthenticatedUser}
+            fetchArtwork={fetchArtwork}
           />
         </Route>
         <Route path="/">

@@ -1,27 +1,30 @@
 import React from "react";
 import HomeNav from "./HomeNav";
 import Content from "./Content";
-import SearchBar from "./SearchBar";
 
 function HomePage({
   artCollection,
   favorites,
   authenticatedUser,
   updateAuthenticatedUser,
-  addToFavorites
+  addToFavorites,
+  fetchArtwork,
 }) {
   return (
     <>
-
-      <HomeNav handleLogout={updateAuthenticatedUser} />
-      <SearchBar />
-      <Content
-        artCollection={artCollection}
-        favorites={favorites}
-        authenticatedUser={authenticatedUser}
-        updateAuthenticatedUser={updateAuthenticatedUser}
-        addToFavorites={addToFavorites}
-      />
+      <div className="sticky top-0 bottom-20 z-50 mb-5">
+        <HomeNav handleLogout={updateAuthenticatedUser} />
+      </div>
+      <div className="relative">
+        <Content
+          artCollection={artCollection}
+          favorites={favorites}
+          authenticatedUser={authenticatedUser}
+          updateAuthenticatedUser={updateAuthenticatedUser}
+          addToFavorites={addToFavorites}
+          fetchArtwork={fetchArtwork}
+        />
+      </div>
     </>
   );
 }

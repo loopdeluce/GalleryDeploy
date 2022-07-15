@@ -11,6 +11,11 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
   function registerNewUser(e) {
     e.preventDefault();
 
+    if (usernameField === "" || passwordField === "" || firstNameField === "") {
+      alert("Pease do not leave any information empty!");
+      return null;
+    }
+
     const existingUsername = existingUsers.find(
       (existingUser) => existingUser.username === usernameField
     );
@@ -68,7 +73,6 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
             />
           </div>
           <div>
-            {/* <label htmlFor="password">Password</label> */}
             <input
               type="password"
               className="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 bg-slate-50"
@@ -84,7 +88,7 @@ function NewUserForm({ existingUsers, postNewUser, handleLogin }) {
             <button
               type="submit"
               onClick={registerNewUser}
-              className="hover:opacity-90 bg-indigo-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
+              className="hover:opacity-90 bg-orange-700 pt-2 pb-3 px-6 lg:py-3 lg:px-20 rounded-full text-white text-sm md:text-lg f-f-p"
             >
               Sign Up
             </button>
