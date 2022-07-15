@@ -10,6 +10,7 @@ function Content({
   favorites,
   authenticatedUser,
   updateAuthenticatedUser,
+  addToFavorites
 }) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
@@ -26,14 +27,15 @@ function Content({
       <Route path="/home/discover">
         <Discover
           artCollection={artCollection}
-          getArtworkDetails={getArtworkDetails}
+          addToFavorites={addToFavorites}
+          favorites={favorites}
         />
       </Route>
       <Route path="/home/details">
         <ArtworkDetail artworkDetails={artworkDetails} />
       </Route>
       <Route path="/home/gallery">
-        <Gallery favorites={favorites} getArtworkDetails={getArtworkDetails} />
+        <Gallery favorites={favorites} addToFavorites={addToFavorites} getArtworkDetails={getArtworkDetails} />
       </Route>
       <Route path="/home/updateaccount">
         <UpdateAccountForm

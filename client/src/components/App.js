@@ -24,9 +24,44 @@ function App() {
       });
   }, []);
 
+
   function updateAuthenticatedUser(user) {
     setAuthenticatedUser(user);
   }
+  
+  function addToFavorites(piece, e) {
+    if (e.target.innerText === "♡ Favorite") {
+      console.log(authenticatedUser.first_name + " unfavorited " + piece.title);
+      fetch("http://127.0.0.1:4200/favorites", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: authenticatedUser.id,
+          artwork_id: piece.id,
+        }),
+      }).then(setFavorites([...favorites, piece]));
+    }
+
+    if (e.target.innerText === "♥ Favorited") {
+      console.log(authenticatedUser.first_name + " favorited " + piece.title);
+      fetch(
+        `http://localhost:4200/users/${authenticatedUser.id}/removefavorite`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ artwork_id: piece.id }),
+        }
+      ).then(() => {
+        let updated = favorites.filter((c) => {
+          return c.id !== piece.id;
+        });
+        setFavorites(updated);
+      });
+    }
+  }
+
+
+
 
   function fetchUserFavoriteArtworks(authenticatedUser) {
     return fetch(
@@ -54,7 +89,7 @@ function App() {
             artCollection={artCollection}
             favorites={favorites}
             authenticatedUser={authenticatedUser}
-            updateAuthenticatedUser={updateAuthenticatedUser}
+            addToFavorites={addToFavorites}
           />
         </Route>
         <Route path="/">

@@ -8,6 +8,7 @@ function HomePage({
   favorites,
   authenticatedUser,
   updateAuthenticatedUser,
+  addToFavorites
 }) {
   return (
     <>
@@ -18,6 +19,7 @@ function HomePage({
         favorites={favorites}
         authenticatedUser={authenticatedUser}
         updateAuthenticatedUser={updateAuthenticatedUser}
+        addToFavorites={addToFavorites}
       />
     </>
   );

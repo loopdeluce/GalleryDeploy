@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Card({ piece, getArtworkDetails }) {
+function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
   const [cardFavorited, setCardFavorited] = useState(false);
   const history = useHistory();
 
@@ -9,8 +9,12 @@ function Card({ piece, getArtworkDetails }) {
   const url = `https://www.artic.edu/iiif/2/${img_link}/full/843,/0/default.jpg`;
   const favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
 
+  const tog = favorites.find((c) => {
+    return c.id === piece.id;
+  });
+
   function showArtworkDetails(event) {
-    if (event.target.innerText !== favoriteButtonSyntax) {
+    if (event.target.innerText !== "♥ Favorited" && event.target.innerText !== "♡ Favorite") {
       getArtworkDetails(key).then(() => history.push("/home/details"));
     }
   }
@@ -34,13 +38,13 @@ function Card({ piece, getArtworkDetails }) {
       </div>
       <div
         onClick={(event) => {
-          setCardFavorited(!cardFavorited);
+          addToFavorites(piece, event);
         }}
         className="px-6 pb-2 flex justify-end"
         id="favorite"
       >
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2 focus:outline-none hover:bg-gray-300">
-          {favoriteButtonSyntax}
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          {tog ? "♥ Favorited" : "♡ Favorite"}
         </span>
       </div>
     </div>
