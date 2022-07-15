@@ -4,8 +4,6 @@ import "../App.css";
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
-import LoginForm from "./LoginForm";
-import NewUserForm from "./NewUserForm";
 import HomePage from "./HomePage";
 
 function App() {
@@ -26,12 +24,8 @@ function App() {
       });
   }, []);
 
-  function handleLogin(user) {
+  function updateAuthenticatedUser(user) {
     setAuthenticatedUser(user);
-  }
-
-  function handleLogout() {
-    setAuthenticatedUser({});
   }
 
   function fetchUserFavoriteArtworks(authenticatedUser) {
@@ -49,35 +43,26 @@ function App() {
       body: JSON.stringify(newUser),
     })
       .then((r) => r.json())
-      .then((newUser) => handleLogin(newUser));
+      .then((newUser) => updateAuthenticatedUser(newUser));
   }
 
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route path="/login">
-          <LoginForm
-            existingUsers={allUsers}
-            handleLogin={handleLogin}
-            fetchUserFavoriteArtworks={fetchUserFavoriteArtworks}
-          />
-        </Route>
-        <Route path="/signup">
-          <NewUserForm
-            existingUsers={allUsers}
-            handleLogin={handleLogin}
-            postNewUser={postNewUser}
-          />
-        </Route>
         <Route path="/home">
           <HomePage
             artCollection={artCollection}
             favorites={favorites}
             authenticatedUser={authenticatedUser}
-            handleLogout={handleLogout}
+            updateAuthenticatedUser={updateAuthenticatedUser}
+          />
+        </Route>
+        <Route path="/">
+          <LandingPage
+            existingUsers={allUsers}
+            handleLogin={updateAuthenticatedUser}
+            fetchUserFavoriteArtworks={fetchUserFavoriteArtworks}
+            postNewUser={postNewUser}
           />
         </Route>
       </Switch>
