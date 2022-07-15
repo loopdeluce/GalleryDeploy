@@ -31,7 +31,6 @@ function LandingPage({
 
   return (
     <>
-
       <div className="lg:px-6 xl:px-8">
         <div className="mx-auto container relative z-0 px-4 xl:px-8">
           <div className="flex flex-col-reverse md:flex-row">

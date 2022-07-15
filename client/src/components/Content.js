@@ -10,7 +10,8 @@ function Content({
   favorites,
   authenticatedUser,
   updateAuthenticatedUser,
-  addToFavorites
+  addToFavorites,
+  fetchArtwork,
 }) {
   const [artworkDetails, setArtworkDetails] = useState({});
 
@@ -18,10 +19,11 @@ function Content({
     return fetch(`https://api.artic.edu/api/v1/artworks/${id}`)
       .then((r) => r.json())
       .then((artworkDetails) => {
-        setArtworkDetails(artworkDetails.data);
+        setArtworkDetails({ internalId: id, ...artworkDetails.data });
       });
   }
 
+  console.log(artworkDetails);
   return (
     <Switch>
       <Route path="/home/discover">
@@ -29,13 +31,23 @@ function Content({
           artCollection={artCollection}
           addToFavorites={addToFavorites}
           favorites={favorites}
+          getArtworkDetails={getArtworkDetails}
+          fetchArtwork={fetchArtwork}
         />
       </Route>
       <Route path="/home/details">
-        <ArtworkDetail artworkDetails={artworkDetails} />
+        <ArtworkDetail
+          artworkDetails={artworkDetails}
+          addToFavorites={addToFavorites}
+          favorites={favorites}
+        />
       </Route>
       <Route path="/home/gallery">
-        <Gallery favorites={favorites} addToFavorites={addToFavorites} getArtworkDetails={getArtworkDetails} />
+        <Gallery
+          favorites={favorites}
+          addToFavorites={addToFavorites}
+          getArtworkDetails={getArtworkDetails}
+        />
       </Route>
       <Route path="/home/updateaccount">
         <UpdateAccountForm

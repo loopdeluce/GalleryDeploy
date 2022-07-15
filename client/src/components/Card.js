@@ -7,7 +7,6 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
 
   const { title, img_link, artist, key } = piece;
   const url = `https://www.artic.edu/iiif/2/${img_link}/full/843,/0/default.jpg`;
-  const favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
 
   const tog = favorites.find((c) => {
     return c.id === piece.id;
@@ -24,15 +23,10 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
 
   return (
     <div
-      className="h-fit max-w-sm rounded-lg overflow-hidden shadow-lg"
+      className="h-fit max-w-sm rounded-lg overflow-hidden shadow-lg my-6"
       onClick={showArtworkDetails}
     >
-      <img
-        className="w-full"
-        src={url}
-        alt="Sunset in the mountains"
-        // width={4}
-      ></img>
+      <img className="w-full" src={url} alt="Sunset in the mountains"></img>
       <div className="px-6 pt-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">
@@ -46,7 +40,7 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
         className="px-6 pb-2 flex justify-end"
         id="favorite"
       >
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">
           {tog ? "♥ Favorited" : "♡ Favorite"}
         </span>
       </div>

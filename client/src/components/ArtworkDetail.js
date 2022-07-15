@@ -1,10 +1,16 @@
-import { useHistory } from "react-router-dom";
+function ArtworkDetail({ artworkDetails, favorites, addToFavorites }) {
+  const tog = favorites.find((c) => {
+    return c.key === artworkDetails.internalId;
+  });
+  console.log("favorites:", favorites);
+  console.log(tog ? "♥ Favorited" : "♡ Favorite");
 
-function ArtworkDetail({ artworkDetails }) {
-  const history = useHistory();
-
-  const cardFavorited = true;
-  const favoriteButtonSyntax = cardFavorited ? "♥ Favorited" : "♡ Favorite";
+  const piece = {
+    title: artworkDetails.title,
+    img_link: artworkDetails.image_id,
+    artist: artworkDetails.artist_display,
+    key: artworkDetails.id,
+  };
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
@@ -50,15 +56,14 @@ function ArtworkDetail({ artworkDetails }) {
                 : "No artwork description listed"}
             </p>
             <div className="flex mt-6  pb-5 border-b-2 border-gray-100 mb-5"></div>
-            <div className="flex justify-between">
-              <button
-                className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                onClick={() => history.push("/home/discover")}
-              >
-                Back to Discover Page
-              </button>
-              <button className="flex ml-auto text-gray-500 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded">
-                {favoriteButtonSyntax}
+            <div
+              className="flex justify-between cursor-pointer"
+              onClick={(event) => {
+                addToFavorites(piece, event);
+              }}
+            >
+              <button className="flex ml-auto text-gray-500 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded cursor-pointer">
+                {tog ? "♥ Favorited" : "♡ Favorite"}
               </button>
             </div>
           </div>
