@@ -14,7 +14,7 @@ function HomePage({
   return (
     <>
       <HomeNav />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Content
         artCollection={artCollection}
         favorites={favorites}

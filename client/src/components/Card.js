@@ -14,14 +14,17 @@ function Card({ piece, getArtworkDetails, favorites, addToFavorites }) {
   });
 
   function showArtworkDetails(event) {
-    if (event.target.innerText !== "♥ Favorited" && event.target.innerText !== "♡ Favorite") {
+    if (
+      event.target.innerText !== "♥ Favorited" &&
+      event.target.innerText !== "♡ Favorite"
+    ) {
       getArtworkDetails(key).then(() => history.push("/home/details"));
     }
   }
 
   return (
     <div
-      className="max-w-sm rounded-lg overflow-hidden shadow-lg"
+      className="h-fit max-w-sm rounded-lg overflow-hidden shadow-lg"
       onClick={showArtworkDetails}
     >
       <img
