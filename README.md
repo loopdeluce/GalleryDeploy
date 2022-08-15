@@ -6,7 +6,34 @@ Login to your user account, browse the art of The Art Institute of Chicago and s
 
 Will be using The Art Insistute of Chicago's API: https://api.artic.edu/docs/#introduction
 
-## Available Scripts
+## Setup
+
+To download the dependencies for the frontend and backend, run:
+
+```console
+$ cd server
+$ bundle install
+$ cd ..
+$ cd client
+$ npm install
+cd ..
+```
+
+You can run the Sinatra API by running:
+
+```console
+$ cd server
+$ shotgun -p 4200
+$ cd ..
+```
+
+You can run the React app by running:
+
+```console
+$ cd client
+$ npm start
+$ cd ..
+```
 
 To get started in your terminal:
 
