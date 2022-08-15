@@ -16,7 +16,7 @@ $ bundle install
 $ cd ..
 $ cd client
 $ npm install
-cd ..
+$ cd ..
 ```
 
 You can run the Sinatra API by running:
@@ -34,20 +34,6 @@ $ cd client
 $ npm start
 $ cd ..
 ```
-
-To get started in your terminal:
-
-### `cd client`
-
-### `npm start`
-
-### `cd ..`
-
-### `cd server`
-
-### `shotgun -p 4200`
-
-## User Stories
 
 As a user I can..
 
