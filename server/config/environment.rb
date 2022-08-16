@@ -5,7 +5,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 ActiveRecord::Base.establish_connection(
   :adapter  =>  'postgresql',
-   :database => 'Gallery_development',
+   :database => 'Gallery_production',
   :encoding => 'utf8'
 )
 
