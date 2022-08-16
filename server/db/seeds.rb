@@ -1,7 +1,7 @@
 require "net/http"
 require "uri"
 require "json"
-require "sqlite3"
+# require "sqlite3"
 
 # puts "Deleting old data..."
 # Artwork.destroy_all
@@ -41,17 +41,17 @@ require "sqlite3"
 #   end
 # end
 
-# the_method(amino)
+# the_method(amino
 
 puts 'Seeding users and favorites'
 User.create(username:'loopdeluce', first_name: 'Lucy', password:'Lucy')
 User.create(username:'teddymilford', first_name: 'Teddy', password:'Teddy')
 
-15.times do 
-  Favorite.create(
-    user_id: rand(1..2),
-    artwork_id: rand(57..106)
-)
-end
+# 15.times do 
+#   Favorite.create(
+#     user_id: rand(1..2),
+#     artwork_id: rand(57..106)
+# )
+# end
 
 puts 'Seeding done'
