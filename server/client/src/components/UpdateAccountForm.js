@@ -13,7 +13,7 @@ function UpdateAccountForm({ authenticatedUser, updateAuthenticatedUser }) {
   }
 
   function patchUserUpdate() {
-    return fetch(`http://127.0.0.1:4200/users/${authenticatedUser.id}`, {
+    return fetch(`/users/${authenticatedUser.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
