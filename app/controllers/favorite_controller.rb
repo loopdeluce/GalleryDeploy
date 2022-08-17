@@ -1,4 +1,4 @@
-require 'Pry'
+
 
 class FavoriteController < ApplicationController
   

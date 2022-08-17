@@ -1,4 +1,4 @@
-require 'Pry'
+
 
 class UserController < ApplicationController
 
