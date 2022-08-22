@@ -1,2 +1,2 @@
-web: bundle exec rake s
+web: bundle exec shotgun
 release: bin/rake db:migrate
